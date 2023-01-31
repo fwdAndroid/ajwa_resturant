@@ -1,5 +1,6 @@
 import 'package:ajwa_resturant/auth/login_page.dart';
 import 'package:ajwa_resturant/provider/circular_provider.dart';
+import 'package:ajwa_resturant/widgets/sidebar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(),
+      home: const SideDrawer(),
     );
   }
 }
