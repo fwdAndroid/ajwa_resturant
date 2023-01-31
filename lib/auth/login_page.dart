@@ -131,8 +131,6 @@ class _FormSection extends StatelessWidget {
                           password: pass.text,
                         )
                             .then((value) {
-                          Customdialog()
-                              .showInSnackBar("Login Successfullt", context);
                           Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
@@ -189,7 +187,7 @@ class _ImageSection extends StatelessWidget {
               child: AnimatedTextKit(
             animatedTexts: [
               WavyAnimatedText(
-                'Ajwa Food',
+                'Ajwa Resturant Panel',
                 textStyle: const TextStyle(
                   letterSpacing: 1,
                   fontSize: 62.0,
