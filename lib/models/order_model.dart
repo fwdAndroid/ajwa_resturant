@@ -6,8 +6,10 @@ class Order_Model {
   String customerRoomNumber;
   String customerMenuDetail;
   String totalPrice;
+  String? OrderAssignHotelName;
 
   Order_Model({
+    this.OrderAssignHotelName,
     required this.uuid,
     required this.customerName,
     required this.totalPrice,
@@ -17,6 +19,7 @@ class Order_Model {
 
   ///Converting OBject into Json Object
   Map<String, dynamic> toJson() => {
+        'OrderAssignHotelName': OrderAssignHotelName,
         'customerMenuDetail': customerMenuDetail,
         'uuid': uuid,
         'customerRoomNumber': customerRoomNumber,
@@ -29,6 +32,7 @@ class Order_Model {
     var snapshot = snaps.data() as Map<String, dynamic>;
 
     return Order_Model(
+        OrderAssignHotelName: snapshot['OrderAssignHotelName'],
         totalPrice: snapshot['totalPrice'],
         customerName: snapshot['customerName'],
         customerRoomNumber: snapshot['customerRoomNumber'],

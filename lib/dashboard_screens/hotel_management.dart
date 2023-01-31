@@ -1,3 +1,4 @@
+import 'package:ajwa_resturant/orders/orders_list.dart';
 import 'package:ajwa_resturant/widgets/colors.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -135,7 +136,21 @@ class _HotelManagmeentState extends State<HotelManagmeent>
                               ],
                             ),
                             SizedBox(
-                              height: 5,
+                              height: 20,
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (builder) => OrderList(
+                                              HotelId: snap['uuid'],
+                                              HotelName: snap['name'],
+                                            )));
+                              },
+                              child: Text("Sent Order Detail"),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColors.primary),
                             ),
                             SizedBox(
                               height: 20,
