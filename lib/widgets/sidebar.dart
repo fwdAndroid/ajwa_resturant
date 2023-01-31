@@ -1,5 +1,6 @@
 import 'package:ajwa_resturant/dashboard_screens/customer_management.dart';
 import 'package:ajwa_resturant/dashboard_screens/food_management.dart';
+import 'package:ajwa_resturant/dashboard_screens/hotel_management.dart';
 import 'package:ajwa_resturant/dashboard_screens/order_management.dart';
 import 'package:ajwa_resturant/dashboard_screens/payment_records.dart';
 import 'package:ajwa_resturant/widgets/colors.dart';
@@ -156,6 +157,10 @@ class ExampleSidebarX extends StatelessWidget {
           label: 'Food Management',
         ),
         const SidebarXItem(
+          icon: Icons.hotel,
+          label: 'Hotel Management',
+        ),
+        const SidebarXItem(
           icon: Icons.looks,
           label: 'Payment Records',
         ),
@@ -186,6 +191,8 @@ class _ScreensExample extends StatelessWidget {
           case 2:
             return const FoodManagement();
           case 3:
+            return const HotelManagmeent();
+          case 4:
             return const PaymentRecords();
 
           default:

@@ -1,4 +1,3 @@
-import 'package:ajwa_resturant/add_forms/add_food_orders.dart';
 import 'package:ajwa_resturant/widgets/colors.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,14 +7,14 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-class OrderManagement extends StatefulWidget {
-  const OrderManagement({super.key});
+class HotelManagmeent extends StatefulWidget {
+  const HotelManagmeent({super.key});
 
   @override
-  State<OrderManagement> createState() => _OrderManagementState();
+  State<HotelManagmeent> createState() => _HotelManagmeentState();
 }
 
-class _OrderManagementState extends State<OrderManagement>
+class _HotelManagmeentState extends State<HotelManagmeent>
     with SingleTickerProviderStateMixin {
   late Animation<double> _animation;
   late AnimationController _animationController;
@@ -39,49 +38,8 @@ class _OrderManagementState extends State<OrderManagement>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-
-      //Init Floating Action Bubble
-      floatingActionButton: FloatingActionBubble(
-        // animation controller
-        animation: _animation,
-
-        // On pressed change animation state
-        onPressed: () => _animationController.isCompleted
-            ? _animationController.reverse()
-            : _animationController.forward(),
-
-        // Floating Action button Icon color
-        iconColor: Colors.white,
-
-        // Floating Action button Icon
-        iconData: Icons.add_task,
-        backgroundColor: AppColors.primary,
-        // Menu items
-        items: <Widget>[
-          // Floating action menu item
-
-          //Floating action menu item
-          BubbleMenu(
-            title: "Add Customer Food Orders",
-            iconColor: Colors.white,
-            bubbleColor: AppColors.primary,
-            icon: Icons.restaurant,
-            style: const TextStyle(fontSize: 16, color: Colors.white),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) => const AddFoodOrders(),
-                ),
-              );
-              _animationController.reverse();
-            },
-          ),
-        ],
-      ),
       body: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection("orders").snapshots(),
+          stream: FirebaseFirestore.instance.collection("hotel").snapshots(),
           builder: (context,
               AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
             if (snapshot.hasError) {
@@ -113,9 +71,9 @@ class _OrderManagementState extends State<OrderManagement>
               padding: const EdgeInsets.all(8.0),
               child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 250.0,
-                    crossAxisSpacing: 35.0,
-                    mainAxisSpacing: 35.0,
+                    maxCrossAxisExtent: 270.0,
+                    crossAxisSpacing: 55.0,
+                    mainAxisSpacing: 55.0,
                   ),
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) {
@@ -134,61 +92,46 @@ class _OrderManagementState extends State<OrderManagement>
                             SizedBox(
                               height: 10,
                             ),
-                            Column(
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Customer Name',
+                                  'Email: ',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                Text(snap['customerName']),
+                                Text(snap['email']),
                               ],
                             ),
                             SizedBox(
                               height: 10,
                             ),
-                            Column(
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Customer Menu Detail: ',
+                                  'Name: ',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                Text(snap['customerMenuDetail']),
+                                Text(snap['name']),
                               ],
                             ),
                             SizedBox(
                               height: 10,
                             ),
-                            Column(
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Room No: ',
+                                  'Location:',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                Text(snap['customerRoomNumber']),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Menu Price: ',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(snap['totalPrice']),
+                                Text(snap['area']),
                               ],
                             ),
                             SizedBox(
