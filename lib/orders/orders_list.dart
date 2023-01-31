@@ -163,31 +163,26 @@ class _OrderListState extends State<OrderList> {
                           ),
                           Expanded(
                               child: Container(
-                            height: 200,
-                            width: MediaQuery.of(context).size.width / 2,
-                            child: Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                elevation: 3,
-                                child: TextButton(
-                                  onPressed: () async {
-                                    await FirebaseFirestore.instance
-                                        .collection("orders")
-                                        .doc(widget.HotelId)
-                                        .update({
-                                      "OrderAssignHotelName": widget.HotelName
-                                    }).then((value) => {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (builder) =>
-                                                          SideDrawer()))
-                                            });
-                                  },
-                                  child: Text("Assign Order To this resturant"),
-                                )),
-                          ))
+                                  height: 200,
+                                  width: MediaQuery.of(context).size.width / 2,
+                                  child: TextButton(
+                                    onPressed: () async {
+                                      await FirebaseFirestore.instance
+                                          .collection("orders")
+                                          .doc(snap['uuid'])
+                                          .update({
+                                        "OrderAssignHotelName": widget.HotelName
+                                      }).then((value) => {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (builder) =>
+                                                            SideDrawer()))
+                                              });
+                                    },
+                                    child:
+                                        Text("Assign Order To this resturant"),
+                                  )))
                         ],
                       );
                     }),
