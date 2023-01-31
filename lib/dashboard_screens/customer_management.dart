@@ -208,7 +208,7 @@ class _CustomerManagementState extends State<CustomerManagement>
                                             child: Material(
                                               child: Container(
                                                 width: 500,
-                                                height: 300,
+                                                height: 370,
                                                 padding: EdgeInsets.all(20),
                                                 color: Colors.white,
                                                 child: Padding(

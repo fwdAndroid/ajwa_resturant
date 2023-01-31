@@ -176,7 +176,9 @@ class _AddCustomerState extends State<AddCustomer> {
       _isLoading = false;
     });
     if (rse != 'sucess') {
-      Customdialog().showInSnackBar("Error", context);
+      Customdialog().showInSnackBar("Success", context);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (builder) => SideDrawer()));
     } else {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Conguration Data is Added")));
