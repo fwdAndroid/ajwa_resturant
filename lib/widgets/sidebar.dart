@@ -187,6 +187,7 @@ class _ScreensExample extends StatelessWidget {
             return const FoodManagement();
           case 3:
             return const PaymentRecords();
+
           default:
             return Text(
               'Not found page',

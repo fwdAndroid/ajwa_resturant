@@ -38,48 +38,48 @@ class _FoodManagementState extends State<FoodManagement>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
 
-      //Init Floating Action Bubble
-      floatingActionButton: FloatingActionBubble(
-        // animation controller
-        animation: _animation,
+      // //Init Floating Action Bubble
+      // floatingActionButton: FloatingActionBubble(
+      //   // animation controller
+      //   animation: _animation,
 
-        // On pressed change animation state
-        onPressed: () => _animationController.isCompleted
-            ? _animationController.reverse()
-            : _animationController.forward(),
+      //   // On pressed change animation state
+      //   onPressed: () => _animationController.isCompleted
+      //       ? _animationController.reverse()
+      //       : _animationController.forward(),
 
-        // Floating Action button Icon color
-        iconColor: Colors.white,
+      //   // Floating Action button Icon color
+      //   iconColor: Colors.white,
 
-        // Floating Action button Icon
-        iconData: Icons.add_task,
-        backgroundColor: AppColors.primary,
-        // Menu items
-        items: <Widget>[
-          // Floating action menu item
+      //   // Floating Action button Icon
+      //   iconData: Icons.add_task,
+      //   backgroundColor: AppColors.primary,
+      //   // Menu items
+      //   items: <Widget>[
+      //     // Floating action menu item
 
-          //Floating action menu item
-          BubbleMenu(
-            title: "Add Food Menus",
-            iconColor: Colors.white,
-            bubbleColor: AppColors.primary,
-            icon: Icons.restaurant,
-            style: const TextStyle(fontSize: 16, color: Colors.white),
-            onPressed: () {},
-            // onPressed: () {
-            //   Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //       builder: (BuildContext context) => const AddFoodMenu(),
-            //     ),
-            //   );
-            //   _animationController.reverse();
-            // },
-          ),
-        ],
-      ),
+      //     //Floating action menu item
+      //     BubbleMenu(
+      //       title: "Add Food Menus",
+      //       iconColor: Colors.white,
+      //       bubbleColor: AppColors.primary,
+      //       icon: Icons.restaurant,
+      //       style: const TextStyle(fontSize: 16, color: Colors.white),
+      //       onPressed: () {},
+      //       // onPressed: () {
+      //       //   Navigator.push(
+      //       //     context,
+      //       //     MaterialPageRoute(
+      //       //       builder: (BuildContext context) => const AddFoodMenu(),
+      //       //     ),
+      //       //   );
+      //       //   _animationController.reverse();
+      //       // },
+      //     ),
+      //   ],
+      // ),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance.collection("foods").snapshots(),
           builder: (context,
