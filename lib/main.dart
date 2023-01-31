@@ -1,7 +1,33 @@
+import 'package:ajwa_resturant/auth/login_page.dart';
+import 'package:ajwa_resturant/provider/circular_provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+        options: const FirebaseOptions(
+            apiKey: "AIzaSyD2ofAW66xIqnE-HmepCAwPiBPw4apkdPY",
+            authDomain: "ajwafood-3697c.firebaseapp.com",
+            projectId: "ajwafood-3697c",
+            storageBucket: "ajwafood-3697c.appspot.com",
+            messagingSenderId: "303175466090",
+            appId: "1:303175466090:web:cf4dae5340832cb75f9e13",
+            measurementId: "G-Z7JKH12J7F"));
+  } else {
+    await Firebase.initializeApp();
+  }
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CircularProgressProvider()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,6 +38,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -24,7 +51,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const LoginPage(),
     );
   }
 }
