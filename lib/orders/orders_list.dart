@@ -1,4 +1,5 @@
 import 'package:ajwa_resturant/widgets/colors.dart';
+import 'package:ajwa_resturant/widgets/input_text.dart';
 import 'package:ajwa_resturant/widgets/sidebar.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,6 +17,7 @@ class OrderList extends StatefulWidget {
 }
 
 class _OrderListState extends State<OrderList> {
+  TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     print(widget.HotelId);
@@ -171,7 +173,8 @@ class _OrderListState extends State<OrderList> {
                                           .collection("orders")
                                           .doc(snap['uuid'])
                                           .update({
-                                        "OrderAssignHotelName": widget.HotelName
+                                        "OrderAssignHotelName":
+                                            widget.HotelName,
                                       }).then((value) => {
                                                 Navigator.push(
                                                     context,
